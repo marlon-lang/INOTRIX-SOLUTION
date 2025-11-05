@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InnoTrix Solution | Gaming Gear Profesional</title>
+
+    <!-- Meta etiquetas para SEO y redes sociales -->
+    <meta name="description"
+        content="Tienda especializada en gaming gear profesional. Teclados mecánicos, mouse gaming y accesorios de alta gama para competidores.">
+    <meta name="keywords" content="gaming, teclados mecánicos, mouse gaming, accesorios gamer, InnoTrix Solution">
+    <meta name="author" content="InnoTrix Solution">
+
+    <!-- Preconexión para mejor performance -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+    <!-- Fuentes e iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Hojas de estilo principales -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- Estilos específicos para la galería -->
+    <style>
+        /* ===== QUITAR CURSOR DE LUPA EN IMÁGENES ===== */
+        .imagen-producto,
+        .producto-imagen img,
+        .carrusel-imagenes img {
+            cursor: default !important;
+        }
+
+        .imagen-producto:hover {
+            transform: none !important;
+        }
+
+        /* ===== EFECTOS LOGO ===== */
+        .logo-imagen {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            object-fit: contain;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border: 2px solid transparent;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+        }
+
+        .logo-imagen:hover {
+            transform: scale(1.12) rotate(2deg);
+            border-color: var(--rog-red);
+            box-shadow:
+                0 0 20px rgba(255, 0, 40, 0.6),
+                inset 0 0 15px rgba(255, 0, 40, 0.2);
+            filter:
+                drop-shadow(0 0 12px rgba(255, 0, 40, 0.8)) drop-shadow(0 0 25px rgba(255, 0, 40, 0.4));
+        }
+
+        /* Para el footer (más pequeño) */
+        .footer-brand .logo-imagen {
+            width: 50px;
+            height: 50px;
+        }
+
+        .footer-brand .logo-imagen:hover {
+            transform: scale(1.08);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ===== ENCABEZADO PRINCIPAL ===== -->
+    <header role="banner">
+        <div class="container header-content">
+            <!-- Logo y marca -->
+            <div class="brand" itemscope itemtype="https://schema.org/Organization">
+                <img src="imagenes/logo-innotrix.png" alt="InnoTrix Solution - Gaming Gear Profesional"
+                    class="logo-imagen" width="60" height="60">
+                <div class="brand-text">
+                    <h1 class="rog-font" itemprop="name">INNOTRIX SOLUTION</h1>
+                    <p itemprop="description">GAMING GEAR PROFESIONAL</p>
+                </div>
+            </div>
+
+            <!-- Acciones de navegación -->
+            <div class="nav-actions">
+                <a class="btn btn-rog"
+                    href="https://wa.me/573021087049?text=Hola%20InnoTrix%20Solution%2C%20estoy%20interesado%20en%20un%20producto"
+                    target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+                    <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                    Contáctanos
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== SECCIÓN HERO ===== -->
+    <section class="hero" role="region" aria-labelledby="hero-title">
+        <div class="container hero-content">
+            <h2 id="hero-title" class="rog-font">MAXIMIZA TU RENDIMIENTO GAMER</h2>
+            <p>Descubre nuestra selección premium de teclados mecánicos, mouse gaming y accesorios diseñados para
+                competidores profesionales.</p>
+
+            <!-- Sistema de búsqueda -->
+            <div class="search-container">
+                <div class="search-box">
+                    <input id="searchInput" type="text" placeholder="Buscar teclados, mouse, accesorios..."
+                        aria-label="Buscar productos">
+                    <div class="search-icon" aria-hidden="true">
+                        <i class="fas fa-search"></i>
+                    </div>
+                </div>
+                <select id="cat" class="filter" aria-label="Filtrar por categoría">
+                    <option value="all">Todas las categorías</option>
+                    <option value="teclados">Teclados</option>
+                    <option value="mouse">Mouse</option>
+                    <option value="accesorios">Accesorios</option>
+                </select>
+            </div>
+
+            <!-- Botones de acción -->
+            <div class="hero-buttons">
+                <a class="btn btn-rog pulse"
+                    href="https://wa.me/573021087049?text=Hola%20InnoTrix%20Solution%2C%20quiero%20información%20de%20sus%20productos"
+                    target="_blank" rel="noopener noreferrer" aria-label="Consultar productos por WhatsApp">
+                    <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                    Consultar por WhatsApp
+                </a>
+                <button id="verCatalogo" class="btn btn-secondary" aria-label="Ver catálogo de productos">
+                    <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                    Ver Catálogo
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECCIÓN CATÁLOGO ===== -->
+    <section id="catalogo" class="catalogo" role="region" aria-labelledby="catalogo-title">
+        <div class="container">
+            <div class="section-header">
+                <h2 id="catalogo-title" class="rog-font">CATÁLOGO DE PRODUCTOS</h2>
+                <p class="section-subtitle">Equipamiento gaming de alta gama para jugadores exigentes</p>
+            </div>
+
+            <!-- Contenedor de productos (se carga dinámicamente) -->
+            <div class="productos" id="productos-container" role="list" aria-label="Lista de productos">
+                <!-- Los productos se cargarán dinámicamente con JavaScript -->
+            </div>
+
+            <!-- Pie del catálogo -->
+            <div class="catalogo-footer">
+                <p>¿No encuentras lo que buscas?</p>
+                <a href="https://wa.me/573021087049?text=Hola%20InnoTrix%2C%20busco%20un%20producto%20específico"
+                    class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+                    Consultar otros productos
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== GALERÍA MODAL ===== -->
+    <div id="galeriaOverlay" class="galeria-overlay" role="dialog" aria-labelledby="galeriaTitulo" aria-modal="true"
+        aria-hidden="true">
+
+        <div class="galeria-contenido">
+            <!-- Botón cerrar -->
+            <button class="galeria-cerrar" onclick="cerrarGaleria()" aria-label="Cerrar galería">
+                <i class="fas fa-times" aria-hidden="true"></i>
+            </button>
+
+            <!-- Contador de imágenes -->
+            <div class="galeria-contador">
+                <span id="contadorImagen">1</span> / <span id="totalImagenes">0</span>
+            </div>
+
+            <!-- Controles de navegación -->
+            <div class="galeria-controles">
+                <button class="galeria-btn" onclick="cambiarImagen(-1)" aria-label="Imagen anterior">
+                    <i class="fas fa-chevron-left" aria-hidden="true"></i>
+                </button>
+                <button class="galeria-btn" onclick="cambiarImagen(1)" aria-label="Imagen siguiente">
+                    <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                </button>
+            </div>
+
+            <!-- Imagen principal -->
+            <div class="galeria-principal">
+                <img id="galeriaImagenGrande" class="galeria-imagen-grande" src="" alt="" role="img">
+            </div>
+
+            <!-- Miniaturas -->
+            <div class="galeria-miniaturas" id="galeriaMiniaturas" role="list" aria-label="Miniaturas de imágenes">
+                <!-- Las miniaturas se generan dinámicamente -->
+            </div>
+
+            <!-- Información del producto -->
+            <div class="galeria-info">
+                <h3 id="galeriaTitulo">Nombre del Producto</h3>
+                <p id="galeriaDescripcion">Descripción del producto...</p>
+                <div class="galeria-precio" id="galeriaPrecio">$0.00</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== PIE DE PÁGINA ===== -->
+    <footer role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Información de la marca -->
+                <div class="footer-info">
+                    <div class="footer-brand">
+                        <img src="imagenes/logo-innotrix.png" alt="InnoTrix Solution" class="logo-imagen" width="50"
+                            height="50">
+                        <div>
+                            <h3 class="rog-font">INNOTRIX SOLUTION</h3>
+                            <p>Tu tienda gamer de confianza</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Información de contacto -->
+                <div class="footer-contact">
+                    <h4>CONTACTO</h4>
+                    <a href="https://wa.me/573021087049" class="contact-link" target="_blank" rel="noopener noreferrer"
+                        aria-label="Contactar por WhatsApp">
+                        <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                        WhatsApp: 302 108 7049
+                    </a>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="footer-copyright">
+                <p>&copy; 2025 INNOTRIX SOLUTION — TODOS LOS DERECHOS RESERVADOS</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>
